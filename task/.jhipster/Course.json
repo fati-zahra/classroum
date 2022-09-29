@@ -1,0 +1,62 @@
+{
+  "applications": "*",
+  "changelogDate": "20220807085116",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "course",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "title",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "language",
+      "fieldType": "Language",
+      "fieldValues": "FRENCH,ENGLISH,SPANISH"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Course",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "teacher",
+      "otherEntityRelationshipName": "course",
+      "ownerSide": true,
+      "relationshipName": "teacher",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "note",
+      "otherEntityRelationshipName": "course",
+      "ownerSide": true,
+      "relationshipName": "note",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "resume",
+      "otherEntityRelationshipName": "course",
+      "ownerSide": true,
+      "relationshipName": "resume",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "quiz",
+      "otherEntityRelationshipName": "course",
+      "ownerSide": true,
+      "relationshipName": "quiz",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "service": "no"
+}

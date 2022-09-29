@@ -1,0 +1,64 @@
+<div  id="full-page" class="d-flex justify-content-center">
+  <div class="col-8 form">
+    <div *ngIf="course">
+      <h2 data-cy="courseDetailsHeading"><span jhiTranslate="tasksApp.course.detail.title">Course</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl style="margin-left:60px;"class="row-md jh-entity-details">
+        <dt><span jhiTranslate="tasksApp.course.id">Id</span></dt>
+        <dd>
+          <span>{{ course.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="tasksApp.course.title">Title</span></dt>
+        <dd>
+          <span>{{ course.title }}</span>
+        </dd>
+        <dt><span jhiTranslate="tasksApp.course.description">Description</span></dt>
+        <dd>
+          <span>{{ course.description }}</span>
+        </dd>
+        <dt><span jhiTranslate="tasksApp.course.language">Language</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'tasksApp.Language.' + course.language }}">{{ course.language }}</span>
+        </dd>
+        <dt><span jhiTranslate="tasksApp.course.teacher">Teacher</span></dt>
+        <dd>
+          <div *ngIf="course.teacher">
+            <a [routerLink]="['/teacher', course.teacher?.firstName, 'view']">{{ course.teacher?.firstName }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="tasksApp.course.note">Note</span></dt>
+        <dd>
+          <div *ngIf="course.note">
+            <a [routerLink]="['/note', course.note?.title, 'view']">{{ course.note?.title }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="tasksApp.course.resume">Resume</span></dt>
+        <dd>
+          <div *ngIf="course.resume">
+            <a [routerLink]="['/resume', course.resume?.title, 'view']">{{ course.resume?.title }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="tasksApp.course.quiz">Quiz</span></dt>
+        <dd>
+          <div *ngIf="course.quiz">
+            <a [routerLink]="['/quiz', course.quiz?.title, 'view']">{{ course.quiz?.title }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/course', course.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

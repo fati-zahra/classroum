@@ -1,0 +1,113 @@
+<div  id="full-page" class="d-flex justify-content-center">
+  <h2 style="color:#90D0F7;" id="jhi-course-heading" data-cy="CourseCreateUpdateHeading" jhiTranslate="tasksApp.course.home.createOrEditLabel">
+    Create or edit a Course
+  </h2>
+  <div class="col-8 form">
+
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="tasksApp.course.id" for="field_id">Id</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="tasksApp.course.title" for="field_title">Title</label>
+          <input type="text" class="form-control" name="title" id="field_title" data-cy="title" formControlName="title" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="tasksApp.course.description" for="field_description">Description</label>
+          <input
+            type="text"
+            class="form-control"
+            name="description"
+            id="field_description"
+            data-cy="description"
+            formControlName="description"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="tasksApp.course.language" for="field_language">Language</label>
+          <select class="form-control" name="language" formControlName="language" id="field_language" data-cy="language">
+            <option [ngValue]="null">{{ 'tasksApp.Language.null' | translate }}</option>
+            <option *ngFor="let language of languageValues" [value]="language">{{ 'tasksApp.Language.' + language | translate }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="tasksApp.course.teacher" for="field_teacher">Teacher</label>
+          <select class="form-control" id="field_teacher" data-cy="teacher" name="teacher" formControlName="teacher">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="teacherOption.id === editForm.get('teacher')!.value?.id ? editForm.get('teacher')!.value : teacherOption"
+              *ngFor="let teacherOption of teachersCollection; trackBy: trackTeacherById"
+            >
+              {{ teacherOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="tasksApp.course.note" for="field_note">Note</label>
+          <select class="form-control" id="field_note" data-cy="note" name="note" formControlName="note">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="noteOption.id === editForm.get('note')!.value?.id ? editForm.get('note')!.value : noteOption"
+              *ngFor="let noteOption of notesCollection; trackBy: trackNoteById"
+            >
+              {{ noteOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="tasksApp.course.resume" for="field_resume">Resume</label>
+          <select class="form-control" id="field_resume" data-cy="resume" name="resume" formControlName="resume">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="resumeOption.id === editForm.get('resume')!.value?.id ? editForm.get('resume')!.value : resumeOption"
+              *ngFor="let resumeOption of resumesCollection; trackBy: trackResumeById"
+            >
+              {{ resumeOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="tasksApp.course.quiz" for="field_quiz">Quiz</label>
+          <select class="form-control" id="field_quiz" data-cy="quiz" name="quiz" formControlName="quiz">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="quizOption.id === editForm.get('quiz')!.value?.id ? editForm.get('quiz')!.value : quizOption"
+              *ngFor="let quizOption of quizzesCollection; trackBy: trackQuizById"
+            >
+              {{ quizOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,51 @@
+#full-page
+{
+	background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url(cour.jpg);
+  height: 100%;
+	width: 100%;
+	background-position: center;
+  	background-size: cover;
+
+}
+
+#forb
+{
+    width:480px;
+	height:580px;
+	position:relative;
+	margin:2% auto;
+	background:rgba(0,0,0,0.3);
+	padding:10px;
+    overflow: hidden;
+}
+#foot{
+width: 65%;
+  	padding: 40px 20px;
+  	    font-family: sans-serif;
+
+
+}
+
+#btn
+{
+
+	width: 65%;
+  	padding: 10px 30px;
+  	cursor: pointer;
+  	display: block;
+  	margin: 30px 30px;
+  	border: 0;
+  	outline: none;
+  	border-radius: 30px;
+}
+.cl
+{
+ text-decoration: none;
+    font-size: 20px;
+    color: white;
+    font-family: sans-serif;
+}
+.form{
+  	padding: 40px 30px;
+
+}

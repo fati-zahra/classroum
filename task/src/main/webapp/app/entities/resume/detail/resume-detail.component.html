@@ -1,0 +1,36 @@
+<div id="full-page" class="d-flex justify-content-center">
+  <div class="col-8 form">
+    <div *ngIf="resume">
+      <h2 data-cy="resumeDetailsHeading"><span jhiTranslate="tasksApp.resume.detail.title">Resume</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl style="margin-left:60px;" class="row-md jh-entity-details">
+        <dt><span jhiTranslate="tasksApp.resume.id">Id</span></dt>
+        <dd>
+          <span>{{ resume.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="tasksApp.resume.title">Title</span></dt>
+        <dd>
+          <span>{{ resume.title }}</span>
+        </dd>
+        <dt><span jhiTranslate="tasksApp.resume.description">Description</span></dt>
+        <dd>
+          <span>{{ resume.description }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/resume', resume.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+#full-page
+{
+	background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.2)),url(home.jpg);
+  height: 100%;
+	width: 100%;
+	background-position: center;
+  	background-size: cover;
+
+}
+ .card{
+	  height:200px;
+	  width:230px;
+
+    margin-left: 10px;
+		backdrop-filter: blur(1rem);
+		box-shadow: 1.3rem 1.3rem 1.3rem rgba(0,0,0,0.5)
+
+}
+.row{
+    margin-top: 30px;
+
+}
+#note{
+	  background-image: url(images/1.jpg);
+}
+#cours{
+	  background-image: url(images/images.jpg);
+}#quiz{
+ 	  background-image: url(images/quiz.jpg);
+ 	  height: 100 px;
+
+ }#resume{
+  	  background-image: url(images/resume.jpg);
+  }#prof{
+   	  background-image: url(images/11.jpg);
+   }

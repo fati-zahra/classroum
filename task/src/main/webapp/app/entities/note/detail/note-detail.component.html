@@ -1,0 +1,36 @@
+<div id="full-page" class="d-flex justify-content-center">
+  <div class="col-8 form">
+    <div *ngIf="note">
+      <h2 data-cy="noteDetailsHeading"><span jhiTranslate="tasksApp.note.detail.title">Note</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl style="margin-left:60px;" class="row-md jh-entity-details">
+        <dt><span jhiTranslate="tasksApp.note.id">Id</span></dt>
+        <dd>
+          <span>{{ note.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="tasksApp.note.title">Title</span></dt>
+        <dd>
+          <span>{{ note.title }}</span>
+        </dd>
+        <dt><span jhiTranslate="tasksApp.note.description">Description</span></dt>
+        <dd>
+          <span>{{ note.description }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/note', note.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

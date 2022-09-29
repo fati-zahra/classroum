@@ -1,0 +1,70 @@
+<div id="full-page">
+  <h2 id="page-heading" data-cy="NoteHeading">
+    <span style="background-color:#DFDF23;" jhiTranslate="tasksApp.note.home.title">Notes</span>
+
+    <div class="d-flex justify-content-end">
+      <button style="background-color:#DFDF23;" class="btn  me-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="tasksApp.note.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button  style="background-color:#E1A628;"
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn  jh-create-entity create-note"
+        [routerLink]="['/note/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="tasksApp.note.home.createLabel"> Create a new Note </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="notes?.length === 0">
+    <span jhiTranslate="tasksApp.note.home.notFound">No notes found</span>
+  </div>
+
+  <div class="table-responsive forb" id="entities" *ngIf="notes && notes.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="tasksApp.note.id">Id</span></th>
+          <th scope="col"><span jhiTranslate="tasksApp.note.title">Title</span></th>
+          <th scope="col"><span jhiTranslate="tasksApp.note.description">Description</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let note of notes; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/note', note.id, 'view']">{{ note.id }}</a>
+          </td>
+          <td style="color:#F7F7EF;" [innerHTML]="note.title"></td>
+          <td style="color:#F7F7EF;" [innerHTML]="note.description"></td>
+          <td style="color:#F7F7EF;" class="text-end">
+            <div class="btn-group">
+              <button type="submit" [routerLink]="['/note', note.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button type="submit" [routerLink]="['/note', note.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(note)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

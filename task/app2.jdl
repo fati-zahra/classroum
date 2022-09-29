@@ -1,0 +1,66 @@
+
+
+
+entity Course {
+    id Long,
+    title String,
+	description String,
+    language Language
+}
+
+enum Language {
+    FRENCH, ENGLISH, SPANISH
+}
+entity Teacher {
+    id Long,
+    firstName String,
+	lastName String,
+	email String,
+	phoneNumber String,
+	}
+    
+entity User {
+    id Long,
+    firstName String,
+	lastName String,
+	email String,
+	phoneNumber String,
+    role String
+	}
+    
+entity Note {
+    id Long
+    title String,
+	description String
+}
+
+entity Resume {
+    id Long
+    title String,
+	description String
+}
+
+entity Quiz {
+    id Long
+    title String,
+	description String
+}
+
+
+relationship OneToOne {
+	Course{teacher} to Teacher,
+	Course{note} to Note,
+	Course{resume} to Resume,
+    Course{quiz} to Quiz
+
+}
+
+/**
+ * Task entity.
+ * @author The JHipster team.
+ */
+
+
+
+// Set an angular suffix
+// angularSuffix * with mySuffix

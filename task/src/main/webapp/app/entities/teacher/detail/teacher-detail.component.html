@@ -1,0 +1,45 @@
+<div id="full-page" class="d-flex justify-content-center">
+  <div class="col-8 form">
+    <div *ngIf="teacher">
+      <h2 data-cy="teacherDetailsHeading"><span jhiTranslate="tasksApp.teacher.detail.title">Teacher</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="tasksApp.teacher.id">Id</span></dt>
+        <dd>
+          <span>{{ teacher.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="tasksApp.teacher.firstName">First Name</span></dt>
+        <dd>
+          <span>{{ teacher.firstName }}</span>
+        </dd>
+        <dt><span jhiTranslate="tasksApp.teacher.lastName">Last Name</span></dt>
+        <dd>
+          <span>{{ teacher.lastName }}</span>
+        </dd>
+        <dt><span jhiTranslate="tasksApp.teacher.email">Email</span></dt>
+        <dd>
+          <span>{{ teacher.email }}</span>
+        </dd>
+        <dt><span jhiTranslate="tasksApp.teacher.phoneNumber">Phone Number</span></dt>
+        <dd>
+          <span>{{ teacher.phoneNumber }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/teacher', teacher.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>
+hello
